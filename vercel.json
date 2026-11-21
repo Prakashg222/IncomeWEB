@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.py"
+    }
+  ],
+  "functions": {
+    "api/index.py": {
+      "includeFiles": [
+        "templates/**",
+        "static/**",
+        "category_rates.json",
+        "auto_reader.py",
+        "services/**",
+        "models.py",
+        "extensions.py",
+        "config.py",
+        "routes.py"
+      ]
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/monthly-email",
+      "schedule": "25 18 * * *"
+    }
+  ]
+}

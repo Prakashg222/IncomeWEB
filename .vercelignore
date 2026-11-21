@@ -1,0 +1,14 @@
+.git/
+.vercel/
+.env
+.env.*
+venv/
+.venv/
+instance/
+tests/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+13-11-2026 ecmp 60070 rahimath.html
+auto_reader_output.json
+sample_result.json

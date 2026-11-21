@@ -1,0 +1,28 @@
+{
+  "currency": "INR",
+  "eligible_statuses": [
+    "UPLOADED"
+  ],
+  "categories": {
+    "Mandatory Biometric Update": {
+      "rate": "20.00",
+      "match": {
+        "type": "U",
+        "mandatory_biometric_update": "Yes"
+      }
+    },
+    "Other Update": {
+      "rate": null,
+      "match": {
+        "type": "U",
+        "mandatory_biometric_update": "No"
+      }
+    },
+    "New Enrolment": {
+      "rate": null,
+      "match": {
+        "type": "E"
+      }
+    }
+  }
+}

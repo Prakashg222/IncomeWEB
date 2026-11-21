@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Upload report{% endblock %}
+{% block breadcrumb %}Workspace <span>/</span> Upload report{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow">REPORT WORKFLOW</span><h1>Upload a report</h1><p>Parse, review and confirm UIDAI ECMP HTML reports before income is recorded.</p></div></div>
+<div class="upload-layout">
+  <section class="panel upload-panel"><div class="panel-heading"><div><h2>Select report file</h2><p>Only confirmed reports count toward income.</p></div><span class="panel-icon"><i class="bi bi-cloud-arrow-up"></i></span></div>
+    <form method="post" enctype="multipart/form-data" id="uploadForm"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label class="dropzone" for="reportFile"><span class="drop-icon"><i class="bi bi-file-earmark-code"></i></span><strong id="fileName">Choose an HTML report</strong><small>Drag a file here or browse from your computer</small><span class="file-hint">HTML / HTM · Up to 10 MB</span><input id="reportFile" name="report" type="file" accept=".html,.htm,text/html" required></label><button class="btn btn-primary w-100 mt-4" id="uploadButton"><i class="bi bi-search me-2"></i>Validate and preview</button></form>
+  </section>
+  <aside class="panel workflow-card"><span class="eyebrow">WHAT HAPPENS NEXT</span><div class="workflow-step"><span>01</span><div><strong>Parse securely</strong><small>Metadata and detail rows are extracted from the source HTML.</small></div></div><div class="workflow-step"><span>02</span><div><strong>Review calculations</strong><small>Category rates and eligible statuses are applied from your settings.</small></div></div><div class="workflow-step"><span>03</span><div><strong>Confirm to save</strong><small>Only your confirmation adds records to final income.</small></div></div><div class="workflow-note"><i class="bi bi-info-circle"></i> Duplicate files are detected by content before they are stored again.</div></aside>
+</div>
+{% endblock %}

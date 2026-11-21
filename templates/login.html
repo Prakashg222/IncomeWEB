@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block auth_content %}
+<section class="login-card">
+  <a class="brand login-brand" href="{{ url_for('main.login') }}"><span class="brand-mark"><i class="bi bi-wallet2"></i></span><span>ledgerly<small>INCOME CONTROL</small></span></a>
+  <div class="login-intro"><span class="eyebrow">WELCOME BACK</span><h1>Your daily numbers,<br>in one place.</h1><p>Sign in to manage reports, rates and income.</p></div>
+  {% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="alert alert-{{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+  <form method="post" class="login-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <fieldset class="login-role-field">
+      <legend>Sign in as</legend>
+      <div class="login-role-options">
+        <label class="login-role-option" for="login-role-user">
+          <input id="login-role-user" type="radio" name="login_role" value="user" required {{ 'checked' if selected_role == 'user' }}>
+          <i class="bi bi-person"></i><span>User</span>
+        </label>
+        <label class="login-role-option" for="login-role-admin">
+          <input id="login-role-admin" type="radio" name="login_role" value="admin" required {{ 'checked' if selected_role == 'admin' }}>
+          <i class="bi bi-shield-lock"></i><span>Admin</span>
+        </label>
+      </div>
+    </fieldset>
+    <label id="username-label" for="username">{{ 'Admin username' if selected_role == 'admin' else 'Aadhaar number' }}</label><div class="input-icon"><i id="username-icon" class="bi {{ 'bi-person-badge' if selected_role == 'admin' else 'bi-person-vcard' }}"></i><input id="username" name="username" class="form-control" autocomplete="username" inputmode="{{ 'text' if selected_role == 'admin' else 'numeric' }}" {% if selected_role == 'user' %}pattern="[0-9\s-]{12,14}" maxlength="14"{% else %}maxlength="80"{% endif %} placeholder="{{ 'Enter your admin username' if selected_role == 'admin' else 'Enter your Aadhaar number' }}" required autofocus></div><small id="username-hint" class="auth-hint">{{ 'Use your admin username to sign in.' if selected_role == 'admin' else 'Use the Aadhaar number linked to your approved account.' }}</small>
+    <label id="password-label" for="password" class="mt-3">{{ 'Admin password' if selected_role == 'admin' else 'Password' }}</label><div class="input-icon"><i class="bi bi-lock"></i><input id="password" name="password" type="password" class="form-control" autocomplete="current-password" required></div>
+    <button class="btn btn-primary w-100 mt-4">Sign in <i class="bi bi-arrow-right ms-2"></i></button>
+  </form>
+  <div class="auth-switch">New to Ledgerly? <a href="{{ url_for('main.register') }}">Create an account</a></div>
+  <div class="login-foot"><i class="bi bi-shield-lock"></i> Aadhaar is stored as a secure, non-reversible lookup hash.</div>
+</section>
+<div class="login-decoration"><div class="decoration-orbit orbit-one"></div><div class="decoration-orbit orbit-two"></div><div class="login-note"><i class="bi bi-graph-up-arrow"></i><strong>Clear numbers.<br>Confident decisions.</strong><span>Your reports, thoughtfully organized.</span></div></div>
+{% endblock %}

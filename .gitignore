@@ -1,0 +1,17 @@
+.env
+.venv/
+venv/
+.vercel/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env.*.local
+.coverage
+instance/
+migrations/__pycache__/
+.env*
+!.env.example
+/13-11-2026 ecmp 60070 rahimath.html
+/auto_reader_output.json
+/sample_result.json
+.vercel
