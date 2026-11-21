@@ -1,11 +1,6 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
@@ -14,17 +9,8 @@
   ],
   "functions": {
     "api/index.py": {
-      "includeFiles": [
-        "templates/**",
-        "static/**",
-        "category_rates.json",
-        "auto_reader.py",
-        "services/**",
-        "models.py",
-        "extensions.py",
-        "config.py",
-        "routes.py"
-      ]
+      "includeFiles": "{app.py,templates/**,static/**,category_rates.json,auto_reader.py,services/**,models.py,extensions.py,config.py,routes.py,migrations/**}",
+      "maxDuration": 60
     }
   },
   "crons": [
