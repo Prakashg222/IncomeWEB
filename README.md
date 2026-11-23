@@ -9,7 +9,7 @@ Use Python 3.12 or newer and PostgreSQL for a production-like local setup. The i
 ```powershell
 cd C:\Users\NANI\OneDrive\Desktop\uidai_auto_reader
 .\venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt
 Copy-Item .env.example .env
 ```
 
@@ -74,7 +74,7 @@ Vercel invokes `/api/monthly-email` daily at 18:25 UTC (23:55 India Standard Tim
    - `SECRET_KEY`
    - `AADHAAR_LOOKUP_KEY` (keep this stable so members can continue signing in)
    - `DATABASE_URL` (PostgreSQL using `postgresql+psycopg://`)
-   - `AWS_S3_BUCKET`, `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`; optionally `AWS_S3_ENDPOINT_URL` for an S3-compatible endpoint
+   - `AWS_S3_BUCKET`, `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`; optionally `AWS_S3_ENDPOINT_URL` (or `AWS_ENDPOINT_URL_S3`) for an S3-compatible endpoint
    - `CRON_SECRET`
    - `ADMIN_USERNAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` for initial account creation
    - `COMPANY_SHARE_PERCENT` and `USER_SHARE_PERCENT` only when the existing share split is known (both must add up to 100)
