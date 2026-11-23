@@ -1,5 +1,4 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "routes": [
     {
@@ -9,14 +8,13 @@
   ],
   "functions": {
     "api/index.py": {
-      "includeFiles": "{app.py,templates/**,static/**,category_rates.json,auto_reader.py,services/**,models.py,extensions.py,config.py,routes.py,migrations/**}",
-      "maxDuration": 60
+      "includeFiles": "{app.py,templates/**,static/**,category_rates.json,auto_reader.py,services/**,models.py,extensions.py,config.py,routes.py}"
     }
   },
   "crons": [
     {
       "path": "/api/monthly-email",
-      "schedule": "25 18 * * *"
+      "schedule": "0 17 * * *"
     }
   ]
 }
